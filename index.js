@@ -102,7 +102,7 @@ async function uploadBasic(authClient) {
 
       try {
 
-        console.log("adsc");
+        // console.log("adsc");
       const file = await service.files.create({
         resource: fileMetadata,
         media: media,
@@ -169,7 +169,7 @@ async function downloadFile(authClient) {
     realFileId= await searchFile(authClient);
     // realFileId="1vRtwhzxn3ZCSOJyG73Pvdgk9OnRDlNah";
 
-    console.log(realFileId);
+    console.log("jsjcnkda");
 
     const service = google.drive({version: 'v3', auth:authClient});
   
@@ -187,11 +187,6 @@ async function downloadFile(authClient) {
             if(err) console.log(err);
         });
       });
-    //   console.log(file.status);
-
-
-
-    //   return file.status;
     } catch (err) {
       // TODO(developer) - Handle error
       throw err;
@@ -199,4 +194,28 @@ async function downloadFile(authClient) {
   }
 
 
-authorize().then(downloadFile).catch(console.error);
+  var ps = require("prompt-sync");
+  const prompt=ps();
+  
+
+  var command = prompt("Enter the command  ");
+  var cmdarray = command.split(" ");
+
+  switch (cmdarray[0]) {
+    case "list":
+        authorize().then(listFiles).catch(console.error);
+        break;
+    case "upload":
+        authorize().then(uploadBasic).catch(console.error);
+        break;
+    case "download":
+        authorize().then(downloadFile).catch(console.error);
+        break;
+    case "search":
+        authorize().then(searchFile).catch(console.error);
+        break;
+    default:
+        console.log("Invalid command");
+        break;
+}
+
