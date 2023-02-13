@@ -1,1 +1,4 @@
-Current Progress: Listing, Create and upload all files from Google Drive done using GoogleDrive API and NodeJS.
+Current Progress:  Files Managaer for Google Drive done using GoogleDrive API and NodeJS with following specifications:
+Listing
+Creating and uploading
+Searching and downloading
